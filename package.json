@@ -9,7 +9,7 @@
     "webpack-devserver": "webpack-dev-server --mode development --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --host 0.0.0.0",
     "nodemon": "cross-env NODE_PATH=./src nodemon ./server.js",
     "build": "webpack --mode production",
-    "server": "cross-env NODE_PATH=./src node ./server.js"
+    "server": "NODE_PATH=./src node ./server.js"
   },
   "license": "ISC",
   "dependencies": {
