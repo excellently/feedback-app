@@ -1,0 +1,10 @@
+{
+  "ext": ".js,.json,.jsx",
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "3030",
+    "MONGO_URL": "mongodb://localhost/feedback",
+    "DEV_PORT": "8080"
+  },
+  "watch": "./"
+}
