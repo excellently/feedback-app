@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 
@@ -35,4 +35,5 @@ class App extends Component {
 
 App.propTypes = propTypes;
 
-export default process.env.NODE_ENV === 'production' ? App : hot(module)(App);
+// export default process.env.NODE_ENV === 'production' ? App : hot(module)(App);
+export default App;

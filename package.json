@@ -9,7 +9,7 @@
     "webpack-devserver": "webpack-dev-server --mode development --debug --hot --devtool eval-source-map --output-pathinfo --watch --colors --inline --content-base public --host 0.0.0.0",
     "nodemon": "cross-env NODE_PATH=./src nodemon ./server.js",
     "build": "webpack --mode production",
-    "server": "NODE_PATH=./src node ./server.js"
+    "server": "cross-env NODE_PATH=./src node ./server.js"
   },
   "license": "ISC",
   "dependencies": {
@@ -38,15 +38,16 @@
     "react-router-bootstrap": "^0.23.1",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "cross-env": "^5.2.0"
   },
   "devDependencies": {
+    "react-hot-loader": "^4.3.12",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.1.5",
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^4.0.1",
-    "cross-env": "^5.2.0",
     "css-loader": "^1.0.1",
     "cssnano": "^4.1.7",
     "eslint": "^5.8.0",
@@ -59,7 +60,6 @@
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.4.0",
-    "react-hot-loader": "^4.3.12",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
