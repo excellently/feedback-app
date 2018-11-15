@@ -26,8 +26,20 @@ app.get('/messages/all', (req, res) => {
   db.getMessages().then(data => res.send(data));
 });
 
+app.get('/child-messages/:parentId', (req, res) => {
+  db.getChildMessages(req.params.parentId).then(data => res.send(data));
+});
+
 app.post('/message', (req, res) => {
   db.createMessage(req.body)
+    .then(data => res.send(data))
+    .catch(err => {
+      res.status(500).send(err.message);
+    });
+});
+
+app.post('/child-message', (req, res) => {
+  db.createChildMessage(req.body)
     .then(data => res.send(data))
     .catch(err => {
       res.status(500).send(err.message);

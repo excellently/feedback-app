@@ -1,3 +1,26 @@
 .message-card {
   margin: 15px;
 }
+
+hr.fancy-line {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 75%);
+  border: 0;
+  height: 1px;
+
+  &:before {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 75%);
+    content: '';
+    top: -0.5em;
+    height: 1em;
+    position: absolute;
+    width: 100%;
+  }
+
+  &:after {
+    content: '';
+    height: 0.5em;
+    top: 1px;
+    position: absolute;
+    width: 100%;
+  }
+}

@@ -37,6 +37,8 @@ class MessagesPage extends Component {
   }
 
   handleClick(event) {
+    event.preventDefault();
+
     MessagesActions.setCurrentPage(Number(event.target.id));
   }
 
@@ -63,8 +65,8 @@ class MessagesPage extends Component {
 
     const renderMessages = currentMessages.map((message, index) => {
       return (
-        <Message key={index} subject={message.subject}
-          text={message.text} createdAt={message.createdAt}
+        <Message key={index + indexOfFirstMessage} subject={message.subject}
+          text={message.text} createdAt={message.createdAt} parentId={message.id}
         />);
     });
 
@@ -95,18 +97,18 @@ class MessagesPage extends Component {
         <div className='container'>
           {renderMessages}
         </div>
-        {isPaginationVisible  &&
-        <ul className='pagination container justify-content-center'>
-          <li className={currentPage === 1 ? 'page-item disabled' : 'page-item'}>
-            <a className='page-link' onClick={this.handleDecrementPage}>Previous</a>
-          </li>
-          {renderPageNumbers}
-          <li className={currentPage === pagesCount ? 'page-item disabled' : 'page-item'}>
-            <a className='page-link' onClick={this.handleIncrementPage}>Next</a>
-          </li>
-        </ul>
+        {
+          isPaginationVisible  &&
+          <ul className='pagination container justify-content-center'>
+            <li className={currentPage === 1 ? 'page-item disabled' : 'page-item'}>
+              <a className='page-link' onClick={this.handleDecrementPage}>Previous</a>
+            </li>
+            {renderPageNumbers}
+            <li className={currentPage === pagesCount ? 'page-item disabled' : 'page-item'}>
+              <a className='page-link' onClick={this.handleIncrementPage}>Next</a>
+            </li>
+          </ul>
         }
-
       </div>
     );
   }

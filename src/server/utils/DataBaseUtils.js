@@ -25,12 +25,31 @@ function createMessage(data) {
   return message.save();
 }
 
+function createChildMessage(data) {
+  const message = new Message({
+    text: data.text,
+    parentId: data.parentId
+  });
+
+  return message.save();
+}
+
 function getMessages() {
-  return Message.find().sort({ createdAt:-1 });
+  return Message.find({
+    parentId: { $exists: false }
+  }).sort({ createdAt:-1 });
+}
+
+function getChildMessages(parentId) {
+  return Message.find({
+    parentId
+  });
 }
 
 module.exports = {
   setUpConnection,
   createMessage,
-  getMessages
+  createChildMessage,
+  getMessages,
+  getChildMessages
 };

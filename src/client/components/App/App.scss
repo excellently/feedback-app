@@ -5,3 +5,7 @@ html {
   margin-right: calc(-1 * (100vw - 100%)) !important;
   overflow-x: hidden;
 }
+
+label:hover {
+  cursor: pointer;
+}

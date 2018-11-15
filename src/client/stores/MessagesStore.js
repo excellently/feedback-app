@@ -17,7 +17,7 @@ const _perPage = 3;
 function formatMessage(message) {
   return {
     id: message.id,
-    subject: message.subject,
+    subject: message.subject || null,
     text: message.text,
     createdAt: message.createdAt
   };

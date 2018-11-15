@@ -24,6 +24,10 @@ const MessagesActions = {
       );
   },
 
+  loadChildMessages(parentId) {
+    return api.getChildMessages(parentId);
+  },
+
   createMessage(message) {
     api.createMessage(message)
       .then(() => {
@@ -36,6 +40,10 @@ const MessagesActions = {
       .catch(err =>
         console.error(err)
       );
+  },
+
+  createChildMessage(message) {
+    return api.createChildMessage(message);
   },
 
   saveMessageValues(message) {

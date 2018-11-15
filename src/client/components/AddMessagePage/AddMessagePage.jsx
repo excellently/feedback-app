@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import MessagesStore from '../../stores/MessagesStore';
 import MessagesActions from '../../actions/MessagesActions';
@@ -16,11 +15,6 @@ function getStateFromFlux() {
     isAdded:  MessagesStore.getIsAdded()
   };
 }
-
-const propTypes = {
-  subject: PropTypes.string,
-  text: PropTypes.string
-};
 
 class AddMessagePage extends Component {
   constructor(props) {
@@ -43,11 +37,13 @@ class AddMessagePage extends Component {
       subject: this.state.subject || '',
       text: this.state.text || ''
     });
+
     MessagesStore.removeChangeListener(this._onChange);
   }
 
   handleTextChange(event) {
     MessagesActions.resetIsAdded();
+
     this.setState({
       text: event.target.value,
       subject: this.state.subject
@@ -56,6 +52,7 @@ class AddMessagePage extends Component {
 
   handleSubjectChange(event) {
     MessagesActions.resetIsAdded();
+
     this.setState({
       subject: event.target.value,
       text: this.state.text
@@ -63,12 +60,11 @@ class AddMessagePage extends Component {
   }
 
   handleMessageAdd(event) {
+    event.preventDefault();
     const newMessage = {
       subject: this.state.subject || '',
       text: this.state.text || ''
     };
-
-    event.preventDefault();
 
     MessagesActions.createMessage(newMessage);
   }
@@ -102,17 +98,15 @@ class AddMessagePage extends Component {
             >Отправить</button>
           </div>
           <div className='row justify-content-center '>
-            {this.state.isAdded &&
-            <Notification />
+            {
+              this.state.isAdded &&
+              <Notification />
             }
           </div>
-
         </form>
       </div>
     );
   }
 }
-
-AddMessagePage.propTypes = propTypes;
 
 export default AddMessagePage;

@@ -6,12 +6,15 @@ mongoose.Promise = global.Promise;
 const MessageSchema = new Schema(
   {
     subject: {
-      type: String,
-      required: true
+      type: String
     },
     text: {
       type: String,
       required: true
+    },
+    parentId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Message'
     },
     createdAt: {
       type: Date,
