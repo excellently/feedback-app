@@ -75,7 +75,7 @@ class AddMessagePage extends Component {
 
   render() {
     return (
-      <div className='add-message col-10 col-md-8 col-lg-6'>
+      <div className='add-message col-10 col-md-8 col-lg-6 ml-auto mr-auto'>
         <h3 className='add-message__title'>Отправка сообщения</h3>
         <form className='container add-message__form'>
           <div className='form-group row'>

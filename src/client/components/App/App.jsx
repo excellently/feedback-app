@@ -23,11 +23,7 @@ class App extends Component {
             </li>
           </ul>
         </nav>
-        <div className='container'>
-          <div className='row justify-content-center'>
-            {this.props.children}
-          </div>
-        </div>
+        {this.props.children}
       </div>
     );
   }
@@ -35,5 +31,9 @@ class App extends Component {
 
 App.propTypes = propTypes;
 
-// export default process.env.NODE_ENV === 'production' ? App : hot(module)(App);
+/* if (module.hot) {
+  module.hot.accept();
+}
+export default hot(module)(App); */
+
 export default App;

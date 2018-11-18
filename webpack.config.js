@@ -1,3 +1,4 @@
+const path = require('path');
 const { argv } = require('yargs');
 const webpack = require('webpack');
 const isDevelopment = argv.mode === 'development';
@@ -42,12 +43,14 @@ const config = {
   },
   plugins,
   output: {
-    path: `${__dirname}/public/assets/`,
+    path: path.join(__dirname, '/public/assets/'),
     filename: jsName,
     publicPath
   },
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' },
+    watchContentBase: true,
+    overlay: true,
     port: DEV_PORT
   },
   module: {

@@ -77,6 +77,9 @@ class Message extends Component {
 
   render() {
     const isHistoryButtonVisible = this.state.isChildsLoaded && !!this.state.childs.length;
+    const renderChilds = this.state.childs.map((message, index) => {
+      return (<ChildMessage key={index} text={message.text} createdAt={message.createdAt}/>);
+    });
 
     return (
       <div className='row message-card card'>
@@ -88,20 +91,20 @@ class Message extends Component {
           <div className='row justify-content-center'>
             <div className='col-auto'><em>{dateFormat(this.props.createdAt)}</em></div>
           </div>
-          <hr className='fancy-line col-12 col-md-10' />
+          <hr className='fancy-line col-md-10 col-12 p-0' />
           {
             isHistoryButtonVisible  &&
-            <div className='row justify-content-center mb-4'>
+            <div className='row justify-content-center mb-3'>
               <button className='btn btn-sm btn-outline-secondary' onClick={this.handleToggleHistory}>
-                {this.state.isChildsVisible ? 'Скрыть' : `Посмотреть историю сообщений ${this.state.childs.length}`}
+                {this.state.isChildsVisible ? 'Скрыть' : `История сообщений (${this.state.childs.length})`}
               </button>
             </div>
           }
           {
             this.state.isChildsVisible &&
-            this.state.childs.map((message, index) => {
-              return (<ChildMessage key={index} text={message.text} createdAt={message.createdAt}/>);
-            })
+            <div className='childs small container col-12 col-md-10'>
+              { renderChilds }
+            </div>
           }
           {
             !this.state.isAnswerVisible &&
@@ -114,7 +117,7 @@ class Message extends Component {
             <div className='answer row mt-4'>
               {
                 this.state.isChildsVisible &&
-                <hr className='fancy-line col-10' />
+                <hr className='fancy-line col-md-10 col-12 p-0' />
               }
               <Answer setAnswerVisible={this.setAnswerVisible} loadChildMessages={this.loadChildMessages}
                 parentId={this.props.parentId}

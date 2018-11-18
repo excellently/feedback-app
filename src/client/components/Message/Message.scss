@@ -2,6 +2,20 @@
   margin: 15px;
 }
 
+.childs {
+  background-color: gray;
+  padding: 10px;
+  border-radius: .25rem;
+
+  &__item {
+    margin: 5px;
+  }
+}
+
+.btn {
+  margin-top: 5px;
+}
+
 hr.fancy-line {
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 75%);
   border: 0;

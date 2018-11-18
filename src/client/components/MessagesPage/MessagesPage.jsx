@@ -39,7 +39,7 @@ class MessagesPage extends Component {
   handleClick(event) {
     event.preventDefault();
 
-    MessagesActions.setCurrentPage(Number(event.target.id));
+    MessagesActions.setCurrentPage(Number(event.target.innerHTML));
   }
 
   handleDecrementPage() {
@@ -78,14 +78,14 @@ class MessagesPage extends Component {
     const renderPageNumbers = pageNumbers
       .filter(number => number - currentPage <= 2 && currentPage - number <= 2)
       .map(number => {
-        const className = currentPage === number ? 'page-item active' : 'page-item';
+        const liClassName = currentPage === number ? 'page-item active' : 'page-item';
 
         return (
-          <li className={className} id={number}
+          <li className={liClassName}
             key={number}
           >
             <a className='page-link' key={number}
-              id={number}
+              id={`page-${number}`}
               onClick={this.handleClick} href='#'
             >{number}</a>
           </li>
@@ -93,20 +93,28 @@ class MessagesPage extends Component {
       });
 
     return (
-      <div className='container col-10'>
-        <div className='container'>
-          {renderMessages}
-        </div>
+      <div className='container'>
+        {renderMessages}
         {
           isPaginationVisible  &&
           <ul className='pagination container justify-content-center'>
-            <li className={currentPage === 1 ? 'page-item disabled' : 'page-item'}>
-              <a className='page-link' onClick={this.handleDecrementPage}>Previous</a>
-            </li>
+            {currentPage === 1
+              ? <li className='page-item disabled'>
+                <a className='page-link' onClick={this.handleDecrementPage} tabIndex='-1'>Previous</a>
+              </li>
+              : <li className='page-item'>
+                <a className='page-link' onClick={this.handleDecrementPage}>Previous</a>
+              </li>
+            }
             {renderPageNumbers}
-            <li className={currentPage === pagesCount ? 'page-item disabled' : 'page-item'}>
-              <a className='page-link' onClick={this.handleIncrementPage}>Next</a>
-            </li>
+            {currentPage === pagesCount
+              ? <li className='page-item disabled'>
+                <a className='page-link' onClick={this.handleIncrementPage} tabIndex='-1'>Next</a>
+              </li>
+              : <li className='page-item'>
+                <a className='page-link' onClick={this.handleIncrementPage}>Next</a>
+              </li>
+            }
           </ul>
         }
       </div>

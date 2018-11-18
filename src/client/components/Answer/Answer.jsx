@@ -50,7 +50,7 @@ class Answer extends Component {
 
   render() {
     return (
-      <div className='col-8 container'>
+      <div className='col-12 col-md-8 container'>
         <div className='form-group ml-auto mr-auto row'>
           <label htmlFor='answer'>Ответ:</label>
           <textarea className='form-control' rows='4' id='answer'

@@ -11,7 +11,7 @@ const propTypes = {
 class ChildMessage extends Component {
   render() {
     return (
-      <div className='row message-card card'>
+      <div className='row childs__item card'>
         <div className='card-body'>
           <p className='card-text'>{this.props.text}</p>
           <div className='row justify-content-center'>
